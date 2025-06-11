@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Quiz</title>
+    <title>Eldor Husanov - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes fadeIn {
@@ -27,24 +27,67 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen flex items-center justify-center p-4">
-<div class="quiz-container bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full">
-    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">JavaScript Quiz</h1>
-    <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
-        <div id="progress-bar" class="progress-bar bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+<body class="bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen flex flex-col">
+<!-- Navbar -->
+<nav class="bg-blue-600 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center space-x-3">
+                <img src="eldor.jpg" alt="Eldor Husanov Avatar" class="w-10 h-10 rounded-full object-cover">
+                <span class="text-xl font-bold">Eldor Husanov</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#home" class="nav-link px-3 py-2 rounded-md hover:bg-blue-700">Home</a>
+                <a href="#contact" class="nav-link px-3 py-2 rounded-md hover:bg-blue-700">Contact</a>
+                <a href="#test" class="nav-link px-3 py-2 rounded-md hover:bg-blue-700">Test</a>
+            </div>
+        </div>
     </div>
-    <div id="question-box" class="fade-in">
-        <p id="question" class="text-lg font-semibold text-gray-700 mb-4"></p>
-        <div id="answers" class="space-y-3"></div>
-        <button id="next-btn" class="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hidden">Keyingi</button>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow flex items-center justify-center p-4">
+    <!-- Home Page -->
+    <div id="home" class="page max-w-2xl w-full text-center hidden">
+        <img src="eldor.jpg" alt="Eldor Husanov" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Eldor Husanov</h1>
+        <p class="text-lg text-gray-700 mb-6">Salom! Men Eldor Husanov, veb-dasturchi va JavaScript ishqiboziman. Ushbu portfolio orqali mening loyihalarim va bilimlarim bilan tanishishingiz mumkin.</p>
     </div>
-    <div id="result-box" class="hidden fade-in">
-        <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">Test natijasi:</h2>
-        <p id="score" class="text-center text-lg text-gray-700 mb-6"></p>
-        <button onclick="location.reload()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">Qayta boshlash</button>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page max-w-2xl w-full text-center hidden">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Bog‘lanish</h1>
+        <p class="text-lg text-gray-700 mb-6">Meni bilan ijtimoiy tarmoqlarda bog‘laning:</p>
+        <div class="flex justify-center space-x-4">
+            <a href="https://www.instagram.com/yourusername" target="_blank" class="text-blue-600 hover:text-blue-800">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.148 3.227-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.849 0-3.205.012-3.584.069-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.332.014 7.052.072 2.951.227.227 2.951.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.227 4.101 2.951 6.825 7.052 6.98 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.101-.227 6.825-2.951 6.98-7.052.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.227-4.101-2.951-6.825-7.052-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg>
+            </a>
+            <a href="https://t.me/yourusername" target="_blank" class="text-blue-600 hover:text-blue-800">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M11.994 2C6.477 2 2 6.477 2 11.994c0 5.517 4.477 9.994 9.994 9.994 5.517 0 9.994-4.477 9.994-9.994C21.988 6.477 17.511 2 11.994 2zm3.335 15.102s-.445.35-1.332.622c-.888.272-2.22.161-3.686-.351-2.353-.822-4.84-2.96-6.617-4.928-1.067-1.178-.845-1.77-.356-2.093.667-.444 1.778-.89 2.888-1.112 1.112-.222 8.227-3.108 8.894-3.108s1 .222.778 1.112c-.223.89-2.001 8.672-2.001 8.672zm-2.224-2.67s.223-.445 1.112-2.447c.89-2.002-.445-3.113-1.112-2.669l-5.781 3.558s-.667.445-.89.667c-.222.223-.445.89.222 1.335.667.445 2.224.222 2.224.222l4.225-2.669z"/></svg>
+            </a>
+        </div>
     </div>
-    <p class="text-center text-sm text-gray-500 mt-6">Muallif: Eldor Husanov</p>
-</div>
+
+    <!-- Test Page (Quiz) -->
+    <div id="test" class="page quiz-container bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">JavaScript Quiz</h1>
+        <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+            <div id="progress-bar" class="progress-bar bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+        </div>
+        <div id="question-box" class="fade-in">
+            <p id="question" class="text-lg font-semibold text-gray-700 mb-4"></p>
+            <div id="answers" class="space-y-3"></div>
+            <button id="next-btn" class="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hidden">Keyingi</button>
+        </div>
+        <div id="result-box" class="hidden fade-in">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">Test natijasi:</h2>
+            <p id="score" class="text-center text-lg text-gray-700 mb-6"></p>
+            <button onclick="location.reload()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">Qayta boshlash</button>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-6">Muallif: Eldor Husanov</p>
+    </div>
+</main>
+
 <script>
     const questions = [
         {
@@ -138,6 +181,7 @@
             ]
         }
     ];
+
     let currentIndex = 0;
     let correctAnswers = 0;
 
@@ -148,7 +192,29 @@
     const nextBtn = document.getElementById("next-btn");
     const scoreEl = document.getElementById("score");
     const progressBar = document.getElementById("progress-bar");
+    const pages = document.querySelectorAll(".page");
+    const navLinks = document.querySelectorAll(".nav-link");
 
+    // Page Navigation
+    function showPage(pageId) {
+        pages.forEach(page => page.classList.add("hidden"));
+        document.getElementById(pageId).classList.remove("hidden");
+        navLinks.forEach(link => link.classList.remove("bg-blue-700"));
+        document.querySelector(`a[href="#${pageId}"]`).classList.add("bg-blue-700");
+        if (pageId === "test" && currentIndex === 0) {
+            loadQuestion();
+        }
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const pageId = link.getAttribute("href").substring(1);
+            showPage(pageId);
+        });
+    });
+
+    // Quiz Logic
     function updateProgress() {
         const progress = ((currentIndex + 1) / questions.length) * 100;
         progressBar.style.width = `${progress}%`;
@@ -159,7 +225,7 @@
         questionEl.textContent = `${currentIndex + 1}. ${current.question}`;
         answersEl.innerHTML = "";
         questionBox.classList.remove("fade-in");
-        void questionBox.offsetWidth; // Trigger reflow for animation
+        void questionBox.offsetWidth;
         questionBox.classList.add("fade-in");
 
         current.answers.forEach((answer, index) => {
@@ -202,10 +268,11 @@
         questionBox.classList.add("hidden");
         resultBox.classList.remove("hidden");
         resultBox.classList.add("fade-in");
-        scoreEl.textContent = `Siz ${questions.length} ta savoldan ${correctAnswers} tasiga to‘g‘ri javob berdingiz (${Math.round((correctAnswers / questions.length) * 100)}%).`;
+        scoreEl.textContent = `Siz ${questions.length} ta savoldan ${correctAnswers} to‘g‘ri javob berdingiz (${Math.round((correctAnswers / questions.length) * 100)}%).`;
     }
 
-    loadQuestion();
+    // Initialize
+    showPage("home");
 </script>
 </body>
 </html>
