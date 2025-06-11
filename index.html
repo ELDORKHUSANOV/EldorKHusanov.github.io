@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eldor Husanov - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -17,7 +19,7 @@
             transition: width 0.3s ease-in-out;
         }
         .answer-button {
-            transition: transform 0.2s, background-color 0.3s;
+            transition: all 0.2s ease-in-out;
         }
         .answer-button:hover {
             transform: scale(1.02);
@@ -25,57 +27,77 @@
         .answer-button:disabled {
             cursor: not-allowed;
         }
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(to bottom, #0a0a2a, #1a1a4a);
+        }
+        body {
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        nav {
+            background: linear-gradient(to right, #1a1a4a, #2c2c6a);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .nav-link:hover {
+            background-color: #3b3b8a;
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen flex flex-col">
+<body>
+<!-- Particles Background -->
+<div id="particles-js"></div>
+
 <!-- Navbar -->
-<nav class="bg-blue-600 text-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav class="text-white shadow-lg relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
         <div class="flex justify-between h-16">
             <div class="flex items-center space-x-3">
-    
-                <span class="text-xl font-bold">Eldor Husanov</span>
+                <img src="eldor.jpg" alt="Eldor Husanov Avatar" class="w-10 h-10 rounded-full object-cover">
+                <span class="text-xl font-semibold">Eldor Husanov</span>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="#home" class="nav-link px-3 py-2 rounded-md hover:bg-blue-700">Home</a>
-                <a href="#contact" class="nav-link px-3 py-2 rounded-md hover:bg-blue-700">Contact</a>
-                <a href="#test" class="nav-link px-3 py-2 rounded-md hover:bg-blue-700">Test</a>
+                <a href="#home" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Home</a>
+                <a href="#contact" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Contact</a>
+                <a href="#test" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Test</a>
             </div>
         </div>
     </div>
 </nav>
 
 <!-- Main Content -->
-<main class="flex-grow flex items-center justify-center p-4">
+<main class="flex-grow flex items-center justify-center p-6 relative z-10">
     <!-- Home Page -->
     <div id="home" class="page max-w-2xl w-full text-center hidden">
-        <img src="eldor.jpg" alt="Eldor Husanov" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">Eldor Husanov</h1>
-        <p class="text-lg text-gray-700 mb-6">
-            Salom! Men Eldor Husanov, veb-dasturchi va JavaScript ishqiboziman. Hozirda <span class="font-semibold">Fido Business</span> kompaniyasida 4 yildan ortiq vaqt davomida dasturchi sifatida ishlayman. Frontend sohasida <span class="font-semibold">HTML, CSS, JavaScript</span> va <span class="font-semibold">React</span> bo‘yicha keng tajribaga egaman, shuningdek, backend dasturlashda <span class="font-semibold">Java, JSP, Oracle</span> va <span class="font-semibold">MySQL</span> bo‘yicha bilim va ko‘nikmalarga ega bo‘ldim. Ushbu portfolio orqali mening loyihalarim va bilimlarim bilan tanishishingiz mumkin.
+        <img src="eldor.jpg" alt="Eldor Husanov" class="w-48 h-48 rounded-full mx-auto mb-8 object-cover">
+        <h1 class="text-3xl font-bold text-white mb-6">Eldor Husanov</h1>
+        <p class="text-lg text-gray-300 mb-6">
+            Salom! Men Eldor Husanov, veb-dasturchi va JavaScript ishqiboziman. Hozirda <span class="font-semibold">Fido Business</span> kompaniyasida 4 yildan ortiq vaqt davomida dasturchi sifatida ishlayman. Frontend sohasida <span class="font-semibold">HTML, CSS, JavaScript</span> va <span class="font-semibold">React</span> bo‘yicha keng tajribaga egaman, shuningdek, backend dasturlashda <span class="font-semibold">Java, JSP, Oracle</span> va <span class="font-semibold">MySQL</span> bo‘yicha bilim va ko‘nikmalarga egaman. Ushbu portfolio orqali mening loyihalarim va bilimlarim bilan tanishishingiz mumkin.
         </p>
     </div>
 
     <!-- Contact Page -->
     <div id="contact" class="page max-w-2xl w-full text-center hidden">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">Bog‘lanish</h1>
-        <p class="text-lg text-gray-700 mb-6">Meni bilan ijtimoiy tarmoqlarda bog‘laning:</p>
+        <h1 class="text-3xl font-bold text-white mb-6">Bog‘lanish</h1>
+        <p class="text-lg text-gray-300 mb-6">Meni bilan ijtimoiy tarmoqlarda bog‘laning:</p>
         <div class="flex justify-center space-x-4">
-            <a href="https://www.instagram.com/yourusername" target="_blank" class="text-blue-600 hover:text-blue-800">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.75 2h8.5A5.25 5.25 0 0 1 21.5 7.25v8.5a5.25 5.25 0 0 1-5.25 5.25h-8.5A5.25 5.25 0 0 1 2.5 15.75v-8.5A5.25 5.25 0 0 1 7.75 2zm0 1.5A3.75 3.75 0 0 0 4 7.25v8.5a3.75 3.75 0 0 0 3.75 3.75h8.5a3.75 3.75 0 0 0 3.75-3.75v-8.5A3.75 3.75 0 0 0 16.25 3.5h-8.5zm9.25 2.25a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-5 1.75a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-                </svg>
+            <a href="https://www.instagram.com/eldor.soft.dev" target="_blank" class="text-blue-400 hover:text-blue-600">
+                <i class="fa fa-instagram" style="font-size:48px;color:red"></i>
             </a>
-            <a href="https://t.me/yourusername" target="_blank" class="text-blue-600 hover:text-blue-800">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.02-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.10-.08-.23-.06-.36.02-.12.08-1.54 1.02-4.37 3-.42.37-.72.52-1.02.51-.34-.01-.97-.20-1.44-.37-.58-.21-1.04-.32-1-.66.03-.17.26-.35.66-.53 2.34-1.05 3.90-1.79 4.67-2.14 2.28-1.03 2.75-1.22 3.05-1.22.24 0 .47.07.64.22.14.13.19.30.18.53-.01.09-.06.34-.14.54z"/>
-                </svg>
+            <a href="https://t.me/eldor_dev" target="_blank" class="text-blue-400 hover:text-blue-600">
+                <i class="fa fa-telegram" style="font-size:48px;color: #0088cc"></i>
             </a>
         </div>
     </div>
 
     <!-- Test Page (Quiz) -->
-    <div id="test" class="page quiz-container bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full">
+    <div id="test" class="page quiz-container bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full relative z-10">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">JavaScript Quiz</h1>
         <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
             <div id="progress-bar" class="progress-bar bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
@@ -95,6 +117,32 @@
 </main>
 
 <script>
+    // Particles.js Configuration (Cosmic Theme)
+    particlesJS("particles-js", {
+        particles: {
+            number: { value: 100, density: { enable: true, value_area: 1000 } },
+            color: { value: ["#ffffff", "#a3bffa", "#64b5f6"] },
+            shape: { type: "circle" },
+            opacity: { value: 0.6, random: true, anim: { enable: true, speed: 0.5, opacity_min: 0.1 } },
+            size: { value: 2, random: true, anim: { enable: true, speed: 1, size_min: 0.5 } },
+            line_linked: { enable: false },
+            move: { enable: true, speed: 1.5, direction: "none", random: true, straight: false, out_mode: "out" }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: { enable: true, mode: "grab" },
+                onclick: { enable: true, mode: "push" },
+                resize: true
+            },
+            modes: {
+                grab: { distance: 200, line_linked: { opacity: 0.3 } },
+                push: { particles_nb: 5 }
+            }
+        },
+        retina_detect: true
+    });
+
     const QUESTIONS = [
         {
             question: "JavaScript dasturlash tili nima uchun ishlatiladi?",
