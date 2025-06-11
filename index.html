@@ -28,122 +28,184 @@
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen flex items-center justify-center p-4">
-    <div class="quiz-container bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">JavaScript Quiz</h1>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
-            <div id="progress-bar" class="progress-bar bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
-        </div>
-        <div id="question-box" class="fade-in">
-            <p id="question" class="text-lg font-semibold text-gray-700 mb-4"></p>
-            <div id="answers" class="space-y-3"></div>
-            <button id="next-btn" class="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hidden">Keyingi</button>
-        </div>
-        <div id="result-box" class="hidden fade-in">
-            <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">Test natijasi:</h2>
-            <p id="score" class="text-center text-lg text-gray-700 mb-6"></p>
-            <button onclick="location.reload()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">Qayta boshlash</button>
-        </div>
-        <p class="text-center text-sm text-gray-500 mt-6">Muallif: Eldor Husanov</p>
+<div class="quiz-container bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">JavaScript Quiz</h1>
+    <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+        <div id="progress-bar" class="progress-bar bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
     </div>
-    <script>
-        const questions = [
-            {
-                question: "JavaScript dasturlash tili nima uchun ishlatiladi?",
-                answers: [
-                    { text: "Veb sahifalarni dizayni uchun", correct: false },
-                    { text: "Ma'lumotlar bazasini boshqarish uchun", correct: false },
-                    { text: "Interaktivlik qo‘shish uchun", correct: true },
-                    { text: "Matn yozish uchun", correct: false }
-                ]
-            },
-            {
-                question: "Qaysi belgilar JavaScriptda funksiya ochish uchun ishlatiladi?",
-                answers: [
-                    { text: "{}", correct: true },
-                    { text: "[]", correct: false },
-                    { text: "()", correct: false },
-                    { text: "<>", correct: false }
-                ]
-            },
-            {
-                question: "JavaScript faylining kengaytmasi qanday?",
-                answers: [
-                    { text: ".java", correct: false },
-                    { text: ".js", correct: true },
-                    { text: ".json", correct: false },
-                    { text: ".script", correct: false }
-                ]
+    <div id="question-box" class="fade-in">
+        <p id="question" class="text-lg font-semibold text-gray-700 mb-4"></p>
+        <div id="answers" class="space-y-3"></div>
+        <button id="next-btn" class="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hidden">Keyingi</button>
+    </div>
+    <div id="result-box" class="hidden fade-in">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">Test natijasi:</h2>
+        <p id="score" class="text-center text-lg text-gray-700 mb-6"></p>
+        <button onclick="location.reload()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">Qayta boshlash</button>
+    </div>
+    <p class="text-center text-sm text-gray-500 mt-6">Muallif: Eldor Husanov</p>
+</div>
+<script>
+    const questions = [
+        {
+            question: "JavaScript dasturlash tili nima uchun ishlatiladi?",
+            answers: [
+                { text: "Veb sahifalarni dizayni uchun", correct: false },
+                { text: "Ma'lumotlar bazasini boshqarish uchun", correct: false },
+                { text: "Interaktivlik qo‘shish uchun", correct: true },
+                { text: "Matn yozish uchun", correct: false }
+            ]
+        },
+        {
+            question: "Qaysi belgilar JavaScriptda funksiya ochish uchun ishlatiladi?",
+            answers: [
+                { text: "{}", correct: true },
+                { text: "[]", correct: false },
+                { text: "()", correct: false },
+                { text: "<>", correct: false }
+            ]
+        },
+        {
+            question: "JavaScript faylining kengaytmasi qanday?",
+            answers: [
+                { text: ".java", correct: false },
+                { text: ".js", correct: true },
+                { text: ".json", correct: false },
+                { text: ".script", correct: false }
+            ]
+        },
+        {
+            question: "JavaScriptda o‘zgaruvchi qaysi kalit so‘z bilan e’lon qilinadi?",
+            answers: [
+                { text: "var", correct: true },
+                { text: "int", correct: false },
+                { text: "string", correct: false },
+                { text: "def", correct: false }
+            ]
+        },
+        {
+            question: "JavaScriptda massiv elementlariga qanday murojaat qilinadi?",
+            answers: [
+                { text: "array(index)", correct: false },
+                { text: "array[index]", correct: true },
+                { text: "array.index", correct: false },
+                { text: "array->index", correct: false }
+            ]
+        },
+        {
+            question: "Qaysi usul HTML elementini ID orqali tanlaydi?",
+            answers: [
+                { text: "getElementByClassName", correct: false },
+                { text: "querySelector", correct: false },
+                { text: "getElementById", correct: true },
+                { text: "getElementsByTagName", correct: false }
+            ]
+        },
+        {
+            question: "JavaScriptda '=== ' operatori nima qiladi?",
+            answers: [
+                { text: "Faqat qiymatlarni taqqoslaydi", correct: false },
+                { text: "Qiymat va tipni taqqoslaydi", correct: true },
+                { text: "Faqat tiplarni taqqoslaydi", correct: false },
+                { text: "O‘zgaruvchilarni o‘zgartiradi", correct: false }
+            ]
+        },
+        {
+            question: "JavaScriptda 'null' va 'undefined' o‘rtasidagi farq nima?",
+            answers: [
+                { text: "Ikkalasi bir xil", correct: false },
+                { text: "null qiymat yo‘qligini, undefined e’lon qilinmaganligini bildiradi", correct: true },
+                { text: "undefined qiymat yo‘qligini bildiradi", correct: false },
+                { text: "null o‘zgaruvchi turini o‘zgartiradi", correct: false }
+            ]
+        },
+        {
+            question: "JavaScriptda 'forEach' metodi nima uchun ishlatiladi?",
+            answers: [
+                { text: "Massivni elementlarini o‘zgartirish uchun", correct: false },
+                { text: "Massiv elementlari bo‘yicha takrorlash uchun", correct: true },
+                { text: "Massivni saralash uchun", correct: false },
+                { text: "Massivni teskari tartibga keltirish uchun", correct: false }
+            ]
+        },
+        {
+            question: "JavaScriptda 'async/await' qanday ishlatiladi?",
+            answers: [
+                { text: "Sinxron funksiyalar uchun", correct: false },
+                { text: "Asinxron operatsiyalarni boshqarish uchun", correct: true },
+                { text: "DOM elementlarini o‘zgartirish uchun", correct: false },
+                { text: "Massivlarni filtr qilish uchun", correct: false }
+            ]
+        }
+    ];
+    let currentIndex = 0;
+    let correctAnswers = 0;
+
+    const questionBox = document.getElementById("question-box");
+    const resultBox = document.getElementById("result-box");
+    const questionEl = document.getElementById("question");
+    const answersEl = document.getElementById("answers");
+    const nextBtn = document.getElementById("next-btn");
+    const scoreEl = document.getElementById("score");
+    const progressBar = document.getElementById("progress-bar");
+
+    function updateProgress() {
+        const progress = ((currentIndex + 1) / questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function loadQuestion() {
+        const current = questions[currentIndex];
+        questionEl.textContent = `${currentIndex + 1}. ${current.question}`;
+        answersEl.innerHTML = "";
+        questionBox.classList.remove("fade-in");
+        void questionBox.offsetWidth; // Trigger reflow for animation
+        questionBox.classList.add("fade-in");
+
+        current.answers.forEach((answer, index) => {
+            const btn = document.createElement("button");
+            btn.textContent = answer.text;
+            btn.classList.add("answer-button", "w-full", "p-3", "bg-gray-100", "rounded-lg", "text-gray-800", "border", "border-gray-300", "text-left");
+            btn.onclick = () => selectAnswer(answer.correct, btn);
+            answersEl.appendChild(btn);
+        });
+
+        nextBtn.classList.add("hidden");
+        updateProgress();
+    }
+
+    function selectAnswer(correct, selectedBtn) {
+        if (correct) correctAnswers++;
+        nextBtn.classList.remove("hidden");
+
+        Array.from(answersEl.children).forEach(btn => {
+            btn.disabled = true;
+            const answer = questions[currentIndex].answers.find(a => a.text === btn.textContent);
+            if (answer.correct) {
+                btn.classList.add("bg-green-200", "border-green-400");
+            } else if (btn === selectedBtn) {
+                btn.classList.add("bg-red-200", "border-red-400");
             }
-        ];
+        });
+    }
 
-        let currentIndex = 0;
-        let correctAnswers = 0;
-
-        const questionBox = document.getElementById("question-box");
-        const resultBox = document.getElementById("result-box");
-        const questionEl = document.getElementById("question");
-        const answersEl = document.getElementById("answers");
-        const nextBtn = document.getElementById("next-btn");
-        const scoreEl = document.getElementById("score");
-        const progressBar = document.getElementById("progress-bar");
-
-        function updateProgress() {
-            const progress = ((currentIndex + 1) / questions.length) * 100;
-            progressBar.style.width = `${progress}%`;
+    nextBtn.onclick = () => {
+        currentIndex++;
+        if (currentIndex < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
         }
+    };
 
-        function loadQuestion() {
-            const current = questions[currentIndex];
-            questionEl.textContent = `${currentIndex + 1}. ${current.question}`;
-            answersEl.innerHTML = "";
-            questionBox.classList.remove("fade-in");
-            void questionBox.offsetWidth; // Trigger reflow for animation
-            questionBox.classList.add("fade-in");
+    function showResult() {
+        questionBox.classList.add("hidden");
+        resultBox.classList.remove("hidden");
+        resultBox.classList.add("fade-in");
+        scoreEl.textContent = `Siz ${questions.length} ta savoldan ${correctAnswers} tasiga to‘g‘ri javob berdingiz (${Math.round((correctAnswers / questions.length) * 100)}%).`;
+    }
 
-            current.answers.forEach((answer, index) => {
-                const btn = document.createElement("button");
-                btn.textContent = answer.text;
-                btn.classList.add("answer-button", "w-full", "p-3", "bg-gray-100", "rounded-lg", "text-gray-800", "border", "border-gray-300", "text-left");
-                btn.onclick = () => selectAnswer(answer.correct, btn);
-                answersEl.appendChild(btn);
-            });
-
-            nextBtn.classList.add("hidden");
-            updateProgress();
-        }
-
-        function selectAnswer(correct, selectedBtn) {
-            if (correct) correctAnswers++;
-            nextBtn.classList.remove("hidden");
-
-            Array.from(answersEl.children).forEach(btn => {
-                btn.disabled = true;
-                const answer = questions[currentIndex].answers.find(a => a.text === btn.textContent);
-                if (answer.correct) {
-                    btn.classList.add("bg-green-200", "border-green-400");
-                } else if (btn === selectedBtn) {
-                    btn.classList.add("bg-red-200", "border-red-400");
-                }
-            });
-        }
-
-        nextBtn.onclick = () => {
-            currentIndex++;
-            if (currentIndex < questions.length) {
-                loadQuestion();
-            } else {
-                showResult();
-            }
-        };
-
-        function showResult() {
-            questionBox.classList.add("hidden");
-            resultBox.classList.remove("hidden");
-            resultBox.classList.add("fade-in");
-            scoreEl.textContent = `Siz ${questions.length} ta savoldan ${correctAnswers} tasiga to‘g‘ri javob berdingiz (${Math.round((correctAnswers / questions.length) * 100)}%).`;
-        }
-
-        loadQuestion();
-    </script>
+    loadQuestion();
+</script>
 </body>
 </html>
