@@ -44,9 +44,124 @@
         nav {
             background: linear-gradient(to right, #1a1a4a, #2c2c6a);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1000;
         }
         .nav-link:hover {
             background-color: #3b3b8a;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            font-size: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .logo-text {
+            color: white;
+        }
+        .logo-text h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        .logo-text p {
+            margin: 0;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+        /* Hamburger Menu Styles */
+        .nav-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .nav-menu.open {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1010;
+        }
+        .menu-toggle span {
+            width: 24px;
+            height: 3px;
+            background-color: white;
+            margin-bottom: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+        .menu-toggle span:last-child {
+            margin-bottom: 0;
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        @media (max-width: 640px) {
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(to right, #1a1a4a, #2c2c6a);
+                flex-direction: column;
+                padding: 10px 0;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                z-index: 1005;
+            }
+            .nav-menu:not(.open) {
+                display: none;
+            }
+            .nav-menu.open {
+                display: flex;
+            }
+            .nav-menu .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .menu-toggle {
+                display: flex;
+            }
+        }
+        @media (min-width: 641px) {
+            .nav-menu {
+                display: flex !important;
+                max-height: none !important;
+                overflow: visible !important;
+                position: static;
+                width: auto;
+                background: transparent;
+                box-shadow: none;
+            }
+            .menu-toggle {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -55,16 +170,29 @@
 <div id="particles-js"></div>
 
 <!-- Navbar -->
-<nav class="text-white shadow-lg relative z-10">
+<nav class="text-white shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between items-center h-16">
             <div class="flex items-center space-x-3">
-                <span class="text-xl font-semibold">Eldor Husanov</span>
+                <div class="logo">
+                    <div class="logo-icon">EH</div>
+                    <div class="logo-text">
+                        <h1>Eldor Husanov</h1>
+                        <p>Web Developer | Creative Coder</p>
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="#home" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Home</a>
-                <a href="#contact" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Contact</a>
-                <a href="#test" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Test</a>
+            <div class="flex items-center">
+                <button class="menu-toggle" aria-label="Menyuni ochish/yopish">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-menu flex items-center space-x-4 sm:space-x-4">
+                    <a href="#home" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Home</a>
+                    <a href="#contact" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Contact</a>
+                    <a href="#test" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Test</a>
+                </div>
             </div>
         </div>
     </div>
@@ -73,11 +201,11 @@
 <!-- Main Content -->
 <main class="flex-grow flex items-center justify-center p-6 relative z-10">
     <!-- Home Page -->
-    <div id="home" class="page max-w-2xl w-full text-center hidden">
+    <div id="home" class="page max-w-2xl w-full text-center">
         <img src="eldor.jpg" alt="Eldor Husanov" class="w-48 h-48 rounded-full mx-auto mb-8 object-cover">
         <h1 class="text-3xl font-bold text-white mb-6">Eldor Husanov</h1>
         <p class="text-lg text-gray-300 mb-6">
-            Salom! Men Eldor Husanov, veb-dasturchi va JavaScript ishqiboziman. Hozirda <span class="font-semibold">Fido Biznes</span> kompaniyasida 4 yildan ortiq vaqt davomida dasturchi sifatida ishlayman. Frontend sohasida <span class="font-semibold">HTML, CSS, JavaScript</span> va <span class="font-semibold">React</span> bo‘yicha keng tajribaga egaman, shuningdek, backend dasturlashda <span class="font-semibold">Java, JSP, Oracle</span> va <span class="font-semibold">MySQL</span> bo‘yicha bilim va ko‘nikmalarga egaman. Ushbu portfolio orqali mening loyihalarim va bilimlarim bilan tanishishingiz mumkin.
+            Salom! Men Eldor Husanov, veb-dasturchi va JavaScript ishqiboziman. Hozirda <span class="font-semibold">Fido Biznes</span> kompaniyasida 4 yildan ortiq vaqt davomida dasturchi sifatida ishlayman. Frontend sohasida <span class="font-semibold">HTML, CSS, JavaScript</span> va <span class="font-semibold">React</span> bo'yicha keng tajribaga egaman, shuningdek, backend dasturlashda <span class="font-semibold">Java, JSP, Oracle</span> va <span class="font-semibold">MySQL</span> bo'yicha bilim va ko'nikmalarga egaman. Ushbu portfolio orqali mening loyihalarim va bilimlarim bilan tanishishingiz mumkin.
         </p>
         <div style="text-align: center; margin: 40px auto; font-family: 'Roboto', Arial, sans-serif; max-width: 320px; padding: 25px;">
             <a href="https://www.hitwebcounter.com" target="_blank" style="text-decoration: none; display: inline-block;">
@@ -90,32 +218,29 @@
                         onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'"
                 />
             </a>
-            <div style="font-size: 18px;  font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 10px; text-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+            <div style="font-size: 18px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 10px; text-shadow: 0 1px 2px rgba(0,0,0,0.05);">
                 <span style="font-size: 22px;">👁️‍🗨️</span>
-                <span class="text-gray-300 ">Ko‘rgan odamlar soni</span>
+                <span class="text-gray-300">Ko'rgan odamlar soni</span>
             </div>
         </div>
-
     </div>
-<!-- hitwebcounter Code START -->
-<!-- hitwebcounter Code START -->
-                              
+
     <!-- Contact Page -->
     <div id="contact" class="page max-w-2xl w-full text-center hidden">
-        <h1 class="text-3xl font-bold text-white mb-6">Bog‘lanish</h1>
-        <p class="text-lg text-gray-300 mb-6">Meni bilan ijtimoiy tarmoqlarda bog‘laning:</p>
+        <h1 class="text-3xl font-bold text-white mb-6">Bog'lanish</h1>
+        <p class="text-lg text-gray-300 mb-6">Meni bilan ijtimoiy tarmoqlarda bog'laning:</p>
         <div class="flex justify-center space-x-4">
             <a href="https://www.instagram.com/eldor.soft.dev" target="_blank" class="text-blue-400 hover:text-blue-600">
                 <i class="fa fa-instagram" style="font-size:48px;color:red"></i>
             </a>
             <a href="https://t.me/eldor_dev" target="_blank" class="text-blue-400 hover:text-blue-600">
-                <i class="fa fa-telegram" style="font-size:48px;color: #0088cc"></i>
+                <i class="fa fa-telegram" style="font-size:48px;color:#0088cc"></i>
             </a>
         </div>
     </div>
 
     <!-- Test Page (Quiz) -->
-    <div id="test" class="page quiz-container bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full relative z-10">
+    <div id="test" class="page quiz-container bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full relative z-10 hidden">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">JavaScript Quiz</h1>
         <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
             <div id="progress-bar" class="progress-bar bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
@@ -135,7 +260,7 @@
 </main>
 
 <script>
-    // Particles.js Configuration (Cosmic Theme)
+    // Particles.js Configuration
     particlesJS("particles-js", {
         particles: {
             number: { value: 100, density: { enable: true, value_area: 1000 } },
@@ -148,115 +273,79 @@
         },
         interactivity: {
             detect_on: "canvas",
-            events: {
-                onhover: { enable: true, mode: "grab" },
-                onclick: { enable: true, mode: "push" },
-                resize: true
-            },
-            modes: {
-                grab: { distance: 200, line_linked: { opacity: 0.3 } },
-                push: { particles_nb: 5 }
-            }
+            events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
+            modes: { grab: { distance: 200, line_linked: { opacity: 0.3 } }, push: { particles_nb: 5 } }
         },
         retina_detect: true
     });
 
     const QUESTIONS = [
-        {
-            question: "JavaScript dasturlash tili nima uchun ishlatiladi?",
-            answers: [
+        { question: "JavaScript dasturlash tili nima uchun ishlatiladi?", answers: [
                 { text: "Veb sahifalarni dizayni uchun", correct: false },
                 { text: "Ma'lumotlar bazasini boshqarish uchun", correct: false },
-                { text: "Interaktivlik qo‘shish uchun", correct: true },
+                { text: "Interaktivlik qo'shish uchun", correct: true },
                 { text: "Matn yozish uchun", correct: false }
-            ]
-        },
-        {
-            question: "Qaysi kalit so‘z JavaScriptda o‘zgaruvchi e’lon qilish uchun ishlatiladi?",
-            answers: [
+            ]},
+        { question: "Qaysi kalit so'z JavaScriptda o'zgaruvchi e'lon qilish uchun ishlatiladi?", answers: [
                 { text: "var", correct: true },
                 { text: "int", correct: false },
                 { text: "string", correct: false },
                 { text: "def", correct: false }
-            ]
-        },
-        {
-            question: "JavaScript faylining kengaytmasi qanday?",
-            answers: [
+            ]},
+        { question: "JavaScript faylining kengaytmasi qanday?", answers: [
                 { text: ".java", correct: false },
                 { text: ".js", correct: true },
                 { text: ".json", correct: false },
                 { text: ".script", correct: false }
-            ]
-        },
-        {
-            question: "JavaScriptda massiv elementlariga qanday murojaat qilinadi?",
-            answers: [
+            ]},
+        { question: "JavaScriptda massiv elementlariga qanday murojaat qilinadi?", answers: [
                 { text: "array(index)", correct: false },
                 { text: "array[index]", correct: true },
                 { text: "array.index", correct: false },
                 { text: "array->index", correct: false }
-            ]
-        },
-        {
-            question: "Qaysi usul HTML elementini ID orqali tanlaydi?",
-            answers: [
+            ]},
+        { question: "Qaysi usul HTML elementini ID orqali tanlaydi?", answers: [
                 { text: "getElementByClassName", correct: false },
                 { text: "querySelector", correct: false },
                 { text: "getElementById", correct: true },
                 { text: "getElementsByTagName", correct: false }
-            ]
-        },
-        {
-            question: "JavaScriptda '===' operatori nima qiladi?",
-            answers: [
+            ]},
+        { question: "JavaScriptda '===' operatori nima qiladi?", answers: [
                 { text: "Faqat qiymatlarni taqqoslaydi", correct: false },
                 { text: "Qiymat va tipni taqqoslaydi", correct: true },
                 { text: "Faqat tiplarni taqqoslaydi", correct: false },
-                { text: "O‘zgaruvchilarni o‘zgartiradi", correct: false }
-            ]
-        },
-        {
-            question: "JavaScriptda 'null' va 'undefined' o‘rtasidagi farq nima?",
-            answers: [
+                { text: "O'zgaruvchilarni o'zgartiradi", correct: false }
+            ]},
+        { question: "JavaScriptda 'null' va 'undefined' o'rtasidagi farq nima?", answers: [
                 { text: "Ikkalasi bir xil", correct: false },
-                { text: "null qiymat yo‘qligini, undefined e’lon qilinmaganligini bildiradi", correct: true },
-                { text: "undefined qiymat yo‘qligini bildiradi", correct: false },
-                { text: "null o‘zgaruvchi turini o‘zgartiradi", correct: false }
-            ]
-        },
-        {
-            question: "JavaScriptda 'forEach' metodi nima uchun ishlatiladi?",
-            answers: [
-                { text: "Massivni elementlarini o‘zgartirish uchun", correct: false },
-                { text: "Massiv elementlari bo‘yicha takrorlash uchun", correct: true },
+                { text: "null qiymat yo'qligini, undefined e'lon qilinmaganligini bildiradi", correct: true },
+                { text: "undefined qiymat yo'qligini bildiradi", correct: false },
+                { text: "null o'zgaruvchi turini o'zgartiradi", correct: false }
+            ]},
+        { question: "JavaScriptda 'forEach' metodi nima uchun ishlatiladi?", answers: [
+                { text: "Massivni elementlarini o'zgartirish uchun", correct: false },
+                { text: "Massiv elementlari bo'yicha takrorlash uchun", correct: true },
                 { text: "Massivni saralash uchun", correct: false },
                 { text: "Massivni teskari tartibga keltirish uchun", correct: false }
-            ]
-        },
-        {
-            question: "JavaScriptda 'async/await' qanday ishlatiladi?",
-            answers: [
+            ]},
+        { question: "JavaScriptda 'async/await' qanday ishlatiladi?", answers: [
                 { text: "Sinxron funksiyalar uchun", correct: false },
                 { text: "Asinxron operatsiyalarni boshqarish uchun", correct: true },
-                { text: "DOM elementlarini o‘zgartirish uchun", correct: false },
+                { text: "DOM elementlarini o'zgartirish uchun", correct: false },
                 { text: "Massivlarni filtr qilish uchun", correct: false }
-            ]
-        },
-        {
-            question: "Reactda komponent qanday yaratiladi?",
-            answers: [
+            ]},
+        { question: "Reactda komponent qanday yaratiladi?", answers: [
                 { text: "Class yoki funksiya orqali", correct: true },
                 { text: "HTML teglari orqali", correct: false },
                 { text: "CSS selektorlari orqali", correct: false },
                 { text: "JSON obyekti orqali", correct: false }
-            ]
-        }
+            ]}
     ];
 
     let currentIndex = 0;
     let correctAnswers = 0;
     let answeredQuestions = 0;
+    let isMenuOpen = false;
 
     const questionBox = document.getElementById("question-box");
     const resultBox = document.getElementById("result-box");
@@ -267,16 +356,84 @@
     const progressBar = document.getElementById("progress-bar");
     const pages = document.querySelectorAll(".page");
     const navLinks = document.querySelectorAll(".nav-link");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-menu");
+
+    // Initialize menu state
+    function initializeMenu() {
+        if (window.innerWidth <= 640) {
+            navMenu.style.display = "none";
+            navMenu.classList.remove("open");
+            menuToggle.classList.remove("active");
+            isMenuOpen = false;
+        } else {
+            navMenu.style.display = "flex";
+            navMenu.classList.remove("open");
+            menuToggle.style.display = "none";
+            isMenuOpen = false;
+        }
+    }
+
+    // Hamburger Menu Toggle
+    menuToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        isMenuOpen = !isMenuOpen;
+
+        if (isMenuOpen) {
+            navMenu.style.display = "flex";
+            navMenu.classList.add("open");
+            menuToggle.classList.add("active");
+        } else {
+            navMenu.classList.remove("open");
+            menuToggle.classList.remove("active");
+            setTimeout(() => {
+                if (!isMenuOpen) navMenu.style.display = "none";
+            }, 300);
+        }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+        if (window.innerWidth <= 640 && isMenuOpen) {
+            const isClickInsideMenu = navMenu.contains(e.target);
+            const isClickOnToggle = menuToggle.contains(e.target);
+
+            if (!isClickInsideMenu && !isClickOnToggle) {
+                navMenu.classList.remove("open");
+                menuToggle.classList.remove("active");
+                isMenuOpen = false;
+                setTimeout(() => {
+                    navMenu.style.display = "none";
+                }, 300);
+            }
+        }
+    });
+
+    // Close menu when a nav link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth <= 640) {
+                navMenu.classList.remove("open");
+                menuToggle.classList.remove("active");
+                isMenuOpen = false;
+                setTimeout(() => {
+                    navMenu.style.display = "none";
+                }, 300);
+            }
+        });
+    });
 
     // Page Navigation
     function showPage(pageId) {
         pages.forEach(page => page.classList.add("hidden"));
-        document.getElementById(pageId).classList.remove("hidden");
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) targetPage.classList.remove("hidden");
         navLinks.forEach(link => link.classList.remove("bg-blue-700"));
-        document.querySelector(`a[href="#${pageId}"]`).classList.add("bg-blue-700");
-        if (pageId === "test") {
-            loadQuestion();
-        }
+        const activeLink = document.querySelector(`a[href="#${pageId}"]`);
+        if (activeLink) activeLink.classList.add("bg-blue-700");
+        if (pageId === "test") loadQuestion();
     }
 
     navLinks.forEach(link => {
@@ -301,7 +458,7 @@
         void questionBox.offsetWidth;
         questionBox.classList.add("fade-in");
 
-        current.answers.forEach((answer, index) => {
+        current.answers.forEach(answer => {
             const btn = document.createElement("button");
             btn.textContent = answer.text;
             btn.classList.add("answer-button", "w-full", "p-3", "bg-gray-100", "rounded-lg", "text-gray-800", "border", "border-gray-300", "text-left");
@@ -343,11 +500,15 @@
         questionBox.classList.add("hidden");
         resultBox.classList.remove("hidden");
         resultBox.classList.add("fade-in");
-        scoreEl.textContent = `Siz ${QUESTIONS.length} ta savoldan ${correctAnswers} to‘g‘ri javob berdingiz (${Math.round((correctAnswers / QUESTIONS.length) * 100)}%).`;
+        scoreEl.textContent = `Siz ${QUESTIONS.length} ta savoldan ${correctAnswers} to'g'ri javob berdingiz (${Math.round((correctAnswers / QUESTIONS.length) * 100)}%).`;
     }
 
     // Initialize
+    initializeMenu();
     showPage("home");
+
+    // Handle resize
+    window.addEventListener("resize", initializeMenu);
 </script>
 </body>
 </html>
