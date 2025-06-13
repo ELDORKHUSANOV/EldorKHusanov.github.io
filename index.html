@@ -40,12 +40,22 @@
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
+            padding-top: 80px; /* Navbar balandligi uchun joy qoldirish */
         }
         nav {
             background: linear-gradient(to right, #1a1a4a, #2c2c6a);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(26, 26, 74, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         .nav-link:hover {
             background-color: #3b3b8a;
@@ -506,7 +516,14 @@
     // Initialize
     initializeMenu();
     showPage("home");
-
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
     // Handle resize
     window.addEventListener("resize", initializeMenu);
 </script>
