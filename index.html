@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +40,7 @@
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
-            padding-top: 80px; /* Navbar balandligi uchun joy qoldirish */
+            padding-top: 80px;
         }
         nav {
             background: linear-gradient(to right, #1a1a4a, #2c2c6a);
@@ -91,7 +91,6 @@
             font-size: 14px;
             color: #94a3b8;
         }
-        /* Hamburger Menu Styles */
         .nav-menu {
             max-height: 0;
             overflow: hidden;
@@ -131,6 +130,27 @@
         .menu-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
+        .telegram-container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .telegram-post {
+            margin-bottom: 15px;
+        }
+        .error-message {
+            color: #d32f2f;
+            text-align: center;
+            display: none;
+        }
+        .loading {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            display: none;
+        }
         @media (max-width: 640px) {
             .nav-menu {
                 position: absolute;
@@ -157,6 +177,9 @@
             }
             .menu-toggle {
                 display: flex;
+            }
+            .telegram-container {
+                padding: 10px;
             }
         }
         @media (min-width: 641px) {
@@ -201,6 +224,7 @@
                 <div class="nav-menu flex items-center space-x-4 sm:space-x-4">
                     <a href="#home" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Home</a>
                     <a href="#contact" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Contact</a>
+                    <a href="#telegram" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Telegram Channel</a>
                     <a href="#test" class="nav-link px-3 py-2 rounded-lg hover:bg-blue-700">Test</a>
                 </div>
             </div>
@@ -249,6 +273,14 @@
         </div>
     </div>
 
+    <!-- Telegram Channel Page -->
+    <div id="telegram" class="page max-w-2xl w-full text-center hidden">
+        <h1 class="text-3xl font-bold text-white mb-6">@eldor_dev kanalining postlari</h1>
+        <div id="telegram-posts" class="telegram-container"></div>
+        <div id="error-message" class="error-message">Hech qanday post topilmadi.</div>
+        <div id="loading" class="loading">Yuklanmoqda...</div>
+    </div>
+
     <!-- Test Page (Quiz) -->
     <div id="test" class="page quiz-container bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full relative z-10 hidden">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">JavaScript Quiz</h1>
@@ -289,6 +321,53 @@
         retina_detect: true
     });
 
+    // Telegram Post Loading
+    let currentPostId = 11;
+    const maxPostId = 18;
+    const postsContainer = document.getElementById('telegram-posts');
+    const errorMessage = document.getElementById('error-message');
+    const loadingMessage = document.getElementById('loading');
+    let count=0;
+    async function loadPosts() {
+        loadingMessage.style.display = 'block';
+        errorMessage.style.display = 'none';
+
+        let hasPosts = false;
+
+        while (currentPostId < maxPostId) {
+
+            currentPostId++;
+            const postDiv = document.createElement('div');
+            postDiv.className = 'telegram-post';
+            postsContainer.appendChild(postDiv);
+
+            const script = document.createElement('script');
+            script.src = 'https://telegram.org/js/telegram-widget.js?7';
+            script.async = true;
+            script.setAttribute('data-telegram-post', `eldor_soft_dev/${currentPostId}`);
+            script.setAttribute('data-width', '100%');
+
+            const isLoaded = await new Promise((resolve) => {
+                script.onload = () => resolve(true);
+                script.onerror = () => resolve(false);
+                postDiv.appendChild(script);
+            });
+
+            if (isLoaded) {
+                hasPosts = true;
+            } else {
+                postDiv.remove();
+                console.log(`Post ${currentPostId} topilmadi, keyingisiga o‘tildi`);
+            }
+        }
+
+        loadingMessage.style.display = 'none';
+        if (!hasPosts) {
+            errorMessage.style.display = 'block';
+        }
+    }
+
+    // Quiz Logic
     const QUESTIONS = [
         { question: "JavaScript dasturlash tili nima uchun ishlatiladi?", answers: [
                 { text: "Veb sahifalarni dizayni uchun", correct: false },
@@ -444,6 +523,7 @@
         const activeLink = document.querySelector(`a[href="#${pageId}"]`);
         if (activeLink) activeLink.classList.add("bg-blue-700");
         if (pageId === "test") loadQuestion();
+        if (pageId === "telegram") loadPosts();
     }
 
     navLinks.forEach(link => {
@@ -524,7 +604,6 @@
             nav.classList.remove('scrolled');
         }
     });
-    // Handle resize
     window.addEventListener("resize", initializeMenu);
 </script>
 </body>
