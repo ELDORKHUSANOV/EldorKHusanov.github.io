@@ -29,12 +29,12 @@ async function loadPosts() {
     errorMessage.style.display = 'none';
 
     let hasPosts = false;
-    const skipIds = new Set([20, 21, 22, 23, 24]);
- while (currentPostId < maxPostId) {
-     if (skipIds.has(currentPostId)) {
+    const skipIds =  [20, 21, 22, 23, 24];
+while (currentPostId < maxPostId) {
+    if (skipIds.includes(currentPostId)) {
         currentPostId++;
-        continue;
-        }
+        continue; // bu IDni o‘tkazib yuboradi
+    }
         currentPostId++;
         const postDiv = document.createElement('div');
         postDiv.className = 'telegram-post';
