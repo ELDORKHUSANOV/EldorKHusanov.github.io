@@ -29,12 +29,8 @@ async function loadPosts() {
     errorMessage.style.display = 'none';
 
     let hasPosts = false;
-    const skipIds =  [19, 20, 21, 22, 23];
-while (currentPostId < maxPostId) {
-    if (skipIds.includes(currentPostId)) {
-        currentPostId++;
-        continue; // bu IDni o‘tkazib yuboradi
-    }
+
+while (currentPostId < maxPostId  (currentPostId < 20 || currentPostId > 24)) {
         currentPostId++;
         const postDiv = document.createElement('div');
         postDiv.className = 'telegram-post';
