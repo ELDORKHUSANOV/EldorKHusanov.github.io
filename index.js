@@ -19,7 +19,7 @@ particlesJS("particles-js", {
 
 // Telegram Post Loading
 let currentPostId = 11;
-const maxPostId = 19;
+const maxPostId = 25;
 const postsContainer = document.getElementById('telegram-posts');
 const errorMessage = document.getElementById('error-message');
 const loadingMessage = document.getElementById('loading');
