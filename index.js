@@ -30,7 +30,7 @@ async function loadPosts() {
 
     let hasPosts = false;
 
-while (currentPostId < maxPostId   (maxPostId  < 20 || maxPostId  > 24)) {
+while (currentPostId < maxPostId  && (maxPostId  < 20 || maxPostId  > 24)) {
         currentPostId++;
         const postDiv = document.createElement('div');
         postDiv.className = 'telegram-post';
