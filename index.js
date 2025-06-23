@@ -29,9 +29,12 @@ async function loadPosts() {
     errorMessage.style.display = 'none';
 
     let hasPosts = false;
-
-    while (currentPostId < maxPostId) {
-
+    const skipIds = new Set([20, 21, 22, 23, 24]);
+ while (currentPostId < maxPostId) {
+     if (skipIds.has(currentPostId)) {
+        currentPostId++;
+        continue;
+        }
         currentPostId++;
         const postDiv = document.createElement('div');
         postDiv.className = 'telegram-post';
