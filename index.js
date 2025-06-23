@@ -29,7 +29,7 @@ async function loadPosts() {
     errorMessage.style.display = 'none';
 
     let hasPosts = false;
-    const skipIds =  [20, 21, 22, 23, 24];
+    const skipIds =  [19, 20, 21, 22, 23];
 while (currentPostId < maxPostId) {
     if (skipIds.includes(currentPostId)) {
         currentPostId++;
